@@ -1,0 +1,1324 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Biblioteca de Modelos de Posts - Prospera Rio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --azul-principal: #092040;
+      --azul-secundaria: #00B7D7;
+      --amarelo-acento: #ECC203;
+      --cinza-neutro: #EFF1F3;
+      --azul-escuro: #021738;
+      --branco: #FFFFFF;
+      --verde: #10b981;
+      --roxo: #8b5cf6;
+      --laranja: #f97316;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background: var(--cinza-neutro);
+      color: var(--azul-escuro);
+      padding: 0;
+      margin: 0;
+      line-height: 1.6;
+      font-size: 20px;
+    }
+
+    .container {
+      max-width: 1600px;
+      margin: 0 auto;
+      background: var(--branco);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .header {
+      background: var(--azul-principal);
+      color: var(--branco);
+      padding: 30px;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
+
+    .logo-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .logo {
+      height: 60px;
+      width: auto;
+    }
+
+    .location-text {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      color: var(--amarelo-acento);
+      text-align: center;
+    }
+
+    .header h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .header p {
+      font-size: 20px;
+      font-family: 'Open Sans', sans-serif;
+      opacity: 0.9;
+    }
+
+    .intro-section {
+      padding: 40px 30px;
+      background: linear-gradient(135deg, var(--azul-secundaria) 0%, var(--azul-principal) 100%);
+      color: var(--branco);
+    }
+
+    .intro-section h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 15px;
+      color: var(--amarelo-acento);
+    }
+
+    .intro-section p {
+      font-size: 20px;
+      font-family: 'Open Sans', sans-serif;
+      line-height: 1.8;
+      margin-bottom: 12px;
+    }
+
+    .intro-section ul {
+      margin-left: 20px;
+      margin-top: 15px;
+    }
+
+    .intro-section li {
+      margin-bottom: 8px;
+      font-size: 20px;
+      font-family: 'Open Sans', sans-serif;
+    }
+
+    .content-section {
+      padding: 40px 30px;
+    }
+
+    .section-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--azul-principal);
+      margin-bottom: 30px;
+      padding-bottom: 15px;
+      border-bottom: 3px solid var(--azul-secundaria);
+    }
+
+    .filtros {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+
+    .filtro-btn {
+      padding: 12px 24px;
+      border: 2px solid var(--azul-secundaria);
+      background: var(--branco);
+      border-radius: 8px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--azul-principal);
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .filtro-btn:hover,
+    .filtro-btn.ativo {
+      background: var(--azul-secundaria);
+      color: var(--branco);
+      transform: translateY(-2px);
+    }
+
+    .modelos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+      gap: 25px;
+      margin-bottom: 40px;
+    }
+
+    .modelo-card {
+      background: var(--branco);
+      border: 2px solid var(--azul-secundaria);
+      border-radius: 12px;
+      padding: 25px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      transition: all 0.3s;
+      position: relative;
+    }
+
+    .modelo-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+
+    .modelo-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 15px;
+    }
+
+    .modelo-tags {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .tag {
+      padding: 5px 12px;
+      border-radius: 12px;
+      font-size: 11px;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      color: var(--branco);
+    }
+
+    .tag-educacao { background: var(--azul-secundaria); }
+    .tag-inspiracao { background: var(--verde); }
+    .tag-entretenimento { background: var(--roxo); }
+    .tag-vendas { background: var(--laranja); }
+    .tag-feed { background: var(--azul-principal); }
+    .tag-stories { background: #ec4899; }
+    .tag-reels { background: #f59e0b; }
+
+    .modelo-titulo {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--azul-principal);
+      margin-bottom: 15px;
+    }
+
+    .modelo-texto {
+      background: var(--cinza-neutro);
+      padding: 20px;
+      border-radius: 8px;
+      border-left: 4px solid var(--azul-secundaria);
+      font-size: 16px;
+      line-height: 1.8;
+      color: var(--azul-escuro);
+      margin-bottom: 15px;
+      white-space: pre-wrap;
+    }
+
+    .modelo-dicas {
+      background: rgba(236, 194, 3, 0.1);
+      padding: 15px;
+      border-radius: 8px;
+      border-left: 4px solid var(--amarelo-acento);
+      font-size: 14px;
+      margin-top: 15px;
+    }
+
+    .modelo-dicas strong {
+      font-family: 'Montserrat', sans-serif;
+      color: var(--azul-principal);
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .modelo-acoes {
+      display: flex;
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    .btn-copiar {
+      flex: 1;
+      padding: 10px;
+      background: var(--amarelo-acento);
+      color: var(--azul-escuro);
+      border: none;
+      border-radius: 6px;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .btn-copiar:hover {
+      background: #d4a903;
+      transform: translateY(-2px);
+    }
+
+    .btn-editar {
+      flex: 1;
+      padding: 10px;
+      background: var(--azul-secundaria);
+      color: var(--branco);
+      border: none;
+      border-radius: 6px;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .btn-editar:hover {
+      background: var(--azul-principal);
+      transform: translateY(-2px);
+    }
+
+    .editor-section {
+      background: var(--amarelo-acento);
+      padding: 40px 30px;
+      border-radius: 12px;
+      margin: 40px 0;
+    }
+
+    .editor-section h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--azul-escuro);
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .editor-container {
+      background: var(--branco);
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+    }
+
+    .editor-textarea {
+      width: 100%;
+      min-height: 200px;
+      padding: 20px;
+      border: 2px solid #ddd;
+      border-radius: 8px;
+      font-family: 'Open Sans', sans-serif;
+      font-size: 18px;
+      line-height: 1.8;
+      color: var(--azul-escuro);
+      resize: vertical;
+      transition: border-color 0.3s;
+    }
+
+    .editor-textarea:focus {
+      outline: none;
+      border-color: var(--azul-secundaria);
+    }
+
+    .editor-info {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 15px;
+      padding-top: 15px;
+      border-top: 2px solid #e0e0e0;
+      font-size: 14px;
+      color: #666;
+    }
+
+    .actions {
+      padding: 30px;
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      flex-wrap: wrap;
+      background: var(--cinza-neutro);
+      border-top: 2px solid #ddd;
+    }
+
+    .btn {
+      padding: 14px 32px;
+      border: none;
+      border-radius: 8px;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .btn-primary {
+      background: var(--amarelo-acento);
+      color: var(--azul-escuro);
+    }
+
+    .btn-primary:hover {
+      background: #d4a903;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(236, 194, 3, 0.4);
+    }
+
+    .btn-secondary {
+      background: var(--azul-secundaria);
+      color: var(--branco);
+    }
+
+    .btn-secondary:hover {
+      background: var(--azul-principal);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--azul-principal);
+      border: 2px solid var(--azul-principal);
+    }
+
+    .btn-outline:hover {
+      background: var(--azul-principal);
+      color: var(--branco);
+    }
+
+    .footer {
+      background: linear-gradient(135deg, var(--azul-principal) 0%, var(--azul-escuro) 100%);
+      color: var(--branco);
+      padding: 60px 30px 30px 30px;
+      margin-top: 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 6px;
+      background: linear-gradient(135deg, var(--azul-secundaria) 0%, var(--amarelo-acento) 100%);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+
+    .footer-section h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 20px;
+      color: var(--amarelo-acento);
+      margin-bottom: 20px;
+    }
+
+    .footer-section p,
+    .footer-section a {
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 15px;
+      font-family: 'Open Sans', sans-serif;
+      line-height: 1.8;
+      text-decoration: none;
+      display: block;
+      margin-bottom: 10px;
+      transition: color 0.3s ease;
+    }
+
+    .footer-section a:hover {
+      color: var(--amarelo-acento);
+    }
+
+    .footer-logo {
+      height: 60px;
+      width: auto;
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    .footer-highlight {
+      background: rgba(236, 194, 3, 0.15);
+      padding: 15px;
+      border-radius: 10px;
+      border-left: 4px solid var(--amarelo-acento);
+      margin-top: 15px;
+    }
+
+    .footer-highlight strong {
+      color: var(--amarelo-acento);
+      font-family: 'Open Sans', sans-serif;
+      font-weight: 700;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 15px;
+      margin-top: 15px;
+    }
+
+    .social-links a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 14px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      transition: all 0.3s ease;
+      font-size: 14px;
+      font-family: 'Open Sans', sans-serif;
+      color: #fff;
+    }
+
+    .social-links a:hover {
+      background: var(--amarelo-acento);
+      color: var(--azul-escuro);
+      transform: translateY(-3px);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 30px;
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 14px;
+      font-family: 'Open Sans', sans-serif;
+    }
+
+    .toast {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: var(--verde);
+      color: var(--branco);
+      padding: 15px 25px;
+      border-radius: 8px;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.3s;
+      z-index: 3000;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media print {
+      .actions, .filtros, .btn-copiar, .btn-editar {
+        display: none;
+      }
+    }
+
+    @media (max-width: 1024px) {
+      .modelos-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+      .section-title {
+        font-size: 28px;
+      }
+      .filtros {
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="logo-container">
+        <img class="logo" src="https://lh3.googleusercontent.com/d/1x5sNkC9vd7CI78y0xdkWvgoadxPEMcIf=w800" alt="Prospera Rio — Logomarca" />
+        <div class="location-text">MARÉ · JACAREZINHO</div>
+      </div>
+      <h1>Biblioteca de Modelos de Posts</h1>
+      <p>Templates prontos para adaptar e publicar</p>
+    </div>
+
+    <div class="intro-section">
+      <h2>Como usar esta biblioteca?</h2>
+      <p>Mais de 50 modelos de posts prontos para você adaptar ao seu negócio. Cada template foi criado pensando em diferentes objetivos: educar, inspirar, entreter ou vender. Basta escolher, personalizar e publicar.</p>
+      
+      <p><strong>Instruções de uso:</strong></p>
+      <ul>
+        <li>Navegue pelos filtros para encontrar o tipo de post que precisa</li>
+        <li>Clique em "Copiar" para copiar o texto direto para sua área de transferência</li>
+        <li>Clique em "Editar" para personalizar o modelo no editor</li>
+        <li>Substitua [colchetes] pelas informações do seu negócio</li>
+        <li>Ajuste o tom de voz para combinar com sua marca</li>
+      </ul>
+    </div>
+
+    <div class="content-section">
+      <h2 class="section-title">Filtrar por Categoria</h2>
+      
+      <div class="filtros">
+        <button class="filtro-btn ativo" onclick="filtrar('todos')">Todos</button>
+        <button class="filtro-btn" onclick="filtrar('educacao')">Educação</button>
+        <button class="filtro-btn" onclick="filtrar('inspiracao')">Inspiração</button>
+        <button class="filtro-btn" onclick="filtrar('entretenimento')">Entretenimento</button>
+        <button class="filtro-btn" onclick="filtrar('vendas')">Vendas</button>
+        <button class="filtro-btn" onclick="filtrar('feed')">Feed</button>
+        <button class="filtro-btn" onclick="filtrar('stories')">Stories</button>
+        <button class="filtro-btn" onclick="filtrar('reels')">Reels</button>
+      </div>
+
+      <div class="modelos-grid" id="modelosGrid">
+        <!-- Modelos serão inseridos aqui via JavaScript -->
+      </div>
+    </div>
+
+    <div class="editor-section">
+      <h3>Editor de Post</h3>
+      <p style="text-align: center; font-size: 16px; color: var(--azul-escuro); margin-bottom: 20px;">
+        Personalize seu post aqui antes de copiar
+      </p>
+
+      <div class="editor-container">
+        <textarea class="editor-textarea" id="editorTexto" placeholder="Cole um modelo aqui para editar ou escreva seu próprio texto..."></textarea>
+        <div class="editor-info">
+          <span id="contadorCaracteres">0 caracteres</span>
+          <button class="btn-copiar" onclick="copiarEditor()">Copiar Texto Editado</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button class="btn btn-primary" onclick="window.print()">Imprimir Biblioteca</button>
+      <button class="btn btn-secondary" onclick="exportarModelos()">Exportar Modelos</button>
+      <button class="btn btn-outline" onclick="limparEditor()">Limpar Editor</button>
+    </div>
+
+    <footer class="footer">
+      <div class="footer-grid">
+        <div class="footer-section">
+          <h3>Casa Prospera Maré</h3>
+          <p><strong>Endereço:</strong><br>Rua Teixeira Ribeiro, 527<br>Maré - Rio de Janeiro/RJ</p>
+          <p><strong>WhatsApp:</strong><br><a href="https://wa.me/5521975150995" target="_blank">(21) 97515-0995</a></p>
+          <p><strong>E-mail:</strong><br><a href="mailto:casaprosperamare@gmail.com">casaprosperamare@gmail.com</a></p>
+          <div class="footer-highlight">
+            <strong>Horário de Atendimento:</strong><br>Segunda a Sexta: 9h às 17h
+          </div>
+        </div>
+
+        <div class="footer-section">
+          <h3>Casa Prospera Jacarezinho</h3>
+          <p><strong>Endereço:</strong><br>Rua Amaro Rangel, 49<br>Jacarezinho - Rio de Janeiro/RJ</p>
+          <p><strong>WhatsApp:</strong><br><a href="https://wa.me/5521970387576" target="_blank">(21) 97038-7576</a></p>
+          <p><strong>E-mail:</strong><br><a href="mailto:prosperajacarezinho@gmail.com">prosperajacarezinho@gmail.com</a></p>
+          <div class="footer-highlight">
+            <strong>Horário de Atendimento:</strong><br>Segunda a Sexta: 9h às 17h
+          </div>
+        </div>
+
+        <div class="footer-section">
+          <img src="https://lh3.googleusercontent.com/d/1x5sNkC9vd7CI78y0xdkWvgoadxPEMcIf=w800" alt="Logotipo Prospera Rio" class="footer-logo">
+          <h3>Sobre o Prospera Rio</h3>
+          <p>Iniciativa do Instituto BrArte que apoia empreendedores da Maré e Jacarezinho com capacitação, mentoria e recursos para impulsionar seus negócios.</p>
+          <p><strong>Site:</strong><br><a href="https://www.institutobrarte.org" target="_blank">www.institutobrarte.org</a></p>
+          <div class="social-links">
+            <a href="https://www.instagram.com/prospera.rio" target="_blank">Prospera Rio</a>
+            <a href="https://www.instagram.com/institutobrarte" target="_blank">Instituto BR</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2025 Prospera Rio - Instituto BrArte. Todos os direitos reservados.</p>
+        <p>Desenvolvido com dedicação para empreendedores da Maré e Jacarezinho.</p>
+      </div>
+    </footer>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script>
+    const modelos = [
+      {
+        id: 1,
+        titulo: 'Dica Rápida do Dia',
+        categoria: 'educacao',
+        formato: 'feed',
+        texto: `💡 DICA DO DIA
+
+[Dica prática e objetiva]
+
+Por que isso funciona?
+[Explicação simples]
+
+Salve este post para não esquecer!
+
+Você já faz isso? Conta aqui nos comentários 👇`,
+        dicas: 'Ideal para compartilhar conhecimento de forma rápida. Use linguagem simples e direta.'
+      },
+      {
+        id: 2,
+        titulo: 'Antes e Depois',
+        categoria: 'inspiracao',
+        formato: 'feed',
+        texto: `✨ TRANSFORMAÇÃO REAL
+
+ANTES: [Descreva a situação inicial]
+
+DEPOIS: [Descreva o resultado alcançado]
+
+O que mudou?
+→ [Mudança 1]
+→ [Mudança 2]
+→ [Mudança 3]
+
+Sua transformação pode começar hoje! 💪`,
+        dicas: 'Mostre resultados reais. Use fotos de antes e depois sempre que possível.'
+      },
+      {
+        id: 3,
+        titulo: 'Bastidores do Negócio',
+        categoria: 'entretenimento',
+        formato: 'stories',
+        texto: `👀 OLHA SÓ O QUE ACONTECEU AQUI HOJE
+
+[Mostre algo interessante dos bastidores]
+
+Isso faz parte do nosso dia a dia para entregar o melhor para você!
+
+Responde aí: você imaginava que era assim?`,
+        dicas: 'Humanize sua marca. Mostre o processo, a equipe, o dia a dia real.'
+      },
+      {
+        id: 4,
+        titulo: 'Oferta Especial',
+        categoria: 'vendas',
+        formato: 'feed',
+        texto: `🔥 OFERTA RELÂMPAGO
+
+[Nome do produto/serviço]
+
+DE R$ [valor original]
+POR R$ [valor promocional]
+
+✅ [Benefício 1]
+✅ [Benefício 2]
+✅ [Benefício 3]
+
+⏰ Válido até [data/horário]
+
+Garanta o seu: [link ou chamada para ação]`,
+        dicas: 'Crie urgência real. Sempre inclua data de término da promoção.'
+      },
+      {
+        id: 5,
+        titulo: 'Tutorial Passo a Passo',
+        categoria: 'educacao',
+        formato: 'reels',
+        texto: `📚 COMO FAZER [algo específico]
+
+PASSO 1: [Ação específica]
+PASSO 2: [Próxima ação]
+PASSO 3: [Última ação]
+
+✨ RESULTADO: [O que esperar]
+
+Salva esse post e testa aí!
+Deu certo? Marca a gente nos stories!`,
+        dicas: 'Seja específico e objetivo. No máximo 5 passos para não complicar.'
+      },
+      {
+        id: 6,
+        titulo: 'Depoimento de Cliente',
+        categoria: 'inspiracao',
+        formato: 'feed',
+        texto: `💬 O QUE NOSSOS CLIENTES DIZEM
+
+"[Depoimento do cliente - use aspas]"
+
+- [Nome do cliente]
+
+Histórias como essa nos motivam todos os dias! ❤️
+
+Você também tem uma história para compartilhar? Conta aqui! 👇`,
+        dicas: 'Sempre peça autorização antes de publicar depoimentos. Use nomes reais.'
+      },
+      {
+        id: 7,
+        titulo: 'Curiosidade Surpreendente',
+        categoria: 'entretenimento',
+        formato: 'feed',
+        texto: `😱 VOCÊ SABIA?
+
+[Curiosidade interessante relacionada ao seu nicho]
+
+Surpreendente, né?
+
+Comenta aqui se você já sabia disso!
+Aposto que 9 em cada 10 não sabem 👀`,
+        dicas: 'Escolha curiosidades que realmente surpreendem. Gera engajamento natural.'
+      },
+      {
+        id: 8,
+        titulo: 'Lançamento de Produto',
+        categoria: 'vendas',
+        formato: 'feed',
+        texto: `🚀 CHEGOU!
+
+Depois de muito trabalho, finalmente está aqui:
+[Nome do produto/serviço]
+
+O que tem de especial?
+✨ [Diferencial 1]
+✨ [Diferencial 2]
+✨ [Diferencial 3]
+
+📅 Disponível a partir de [data]
+💰 Investimento: R$ [valor]
+
+Quer saber mais? Chama no direct!`,
+        dicas: 'Construa expectativa antes do lançamento. Conte a história por trás do produto.'
+      },
+      {
+        id: 9,
+        titulo: 'Mito ou Verdade',
+        categoria: 'educacao',
+        formato: 'feed',
+        texto: `❌ MITO OU ✅ VERDADE?
+
+"[Frase comum sobre seu nicho]"
+
+RESPOSTA: [MITO ou VERDADE]
+
+A verdade é que:
+[Explicação clara e didática]
+
+Salva esse post para não espalhar informação errada!`,
+        dicas: 'Derrube mitos comuns na sua área. Eduque com autoridade.'
+      },
+      {
+        id: 10,
+        titulo: 'História Pessoal',
+        categoria: 'inspiracao',
+        formato: 'feed',
+        texto: `💭 HISTÓRIA REAL
+
+[Conte uma história pessoal relacionada ao negócio]
+
+O que aprendi com isso?
+→ [Lição 1]
+→ [Lição 2]
+→ [Lição 3]
+
+E você, já passou por algo parecido?`,
+        dicas: 'Seja vulnerável e autêntico. Histórias pessoais criam conexão profunda.'
+      },
+      {
+        id: 11,
+        titulo: 'Enquete Interativa',
+        categoria: 'entretenimento',
+        formato: 'stories',
+        texto: `🤔 PRECISO DA SUA AJUDA
+
+Qual você prefere?
+
+A) [Opção 1]
+B) [Opção 2]
+
+Vota aí e vou contar o resultado no próximo story!`,
+        dicas: 'Use para conhecer preferências do público. Sempre mostre resultados depois.'
+      },
+      {
+        id: 12,
+        titulo: 'Erro Comum a Evitar',
+        categoria: 'educacao',
+        formato: 'feed',
+        texto: `⚠️ NÃO FAÇA ISSO!
+
+Erro comum: [Descreva o erro]
+
+Por que é um erro?
+[Explicação]
+
+O certo é:
+✅ [Forma correta de fazer]
+
+Já cometeu esse erro? Você não está sozinho!`,
+        dicas: 'Mostre empatia. Todo mundo erra, você está ajudando a corrigir.'
+      },
+      {
+        id: 13,
+        titulo: 'Checklist Prático',
+        categoria: 'educacao',
+        formato: 'feed',
+        texto: `✅ CHECKLIST: [Tema]
+
+☐ [Item 1]
+☐ [Item 2]
+☐ [Item 3]
+☐ [Item 4]
+☐ [Item 5]
+
+Quantos você já faz?
+Comenta aqui o número! 👇
+
+SALVA para não esquecer!`,
+        dicas: 'Formato salvo com frequência. Máximo 7 itens para não cansar.'
+      },
+      {
+        id: 14,
+        titulo: 'Promoção de Última Hora',
+        categoria: 'vendas',
+        formato: 'stories',
+        texto: `🚨 ÚLTIMA HORA!
+
+Sobrou [X] vagas/unidades
+
+[Nome do produto/serviço]
+Por apenas R$ [valor]
+
+⏰ Acaba em [tempo]
+
+Corre! Link na bio
+Ou chama no direct agora`,
+        dicas: 'Use com moderação. Urgência real funciona, urgência falsa prejudica.'
+      },
+      {
+        id: 15,
+        titulo: 'Pergunta Aberta',
+        categoria: 'entretenimento',
+        formato: 'feed',
+        texto: `❓ QUERO SABER
+
+[Pergunta interessante para seu público]
+
+Responde nos comentários!
+Não vale pensar muito, vai na primeira resposta que veio na cabeça 😄`,
+        dicas: 'Perguntas simples e divertidas geram mais engajamento.'
+      },
+      {
+        id: 16,
+        titulo: 'Dica de Ouro',
+        categoria: 'educacao',
+        formato: 'feed',
+        texto: `🏆 DICA DE OURO
+
+Se eu pudesse dar apenas UMA dica sobre [tema], seria esta:
+
+[Dica valiosa e específica]
+
+Isso pode mudar completamente [resultado esperado].
+
+Testa e volta aqui para contar se funcionou!`,
+        dicas: 'Escolha sua melhor dica. Mostre autoridade no assunto.'
+      },
+      {
+        id: 17,
+        titulo: 'Superando Objeções',
+        categoria: 'vendas',
+        formato: 'feed',
+        texto: `💬 "MAS E SE..."
+
+Dúvida comum: [Objeção do cliente]
+
+A verdade é:
+[Resposta que elimina a objeção]
+
+Ainda tem dúvidas?
+Deixa aqui que eu respondo! 👇`,
+        dicas: 'Antecipe objeções. Transparência gera confiança.'
+      },
+      {
+        id: 18,
+        titulo: 'Motivação Matinal',
+        categoria: 'inspiracao',
+        formato: 'feed',
+        texto: `☀️ BOM DIA!
+
+Lembrete importante para sua [segunda/terça/etc]:
+
+[Frase motivacional relacionada ao negócio]
+
+Você é capaz de muito mais do que imagina! 💪
+
+Bora começar o dia com tudo?`,
+        dicas: 'Poste cedo. Seja genuíno, evite frases clichês demais.'
+      },
+      {
+        id: 19,
+        titulo: 'FAQ - Resposta Rápida',
+        categoria: 'educacao',
+        formato: 'stories',
+        texto: `❓ PERGUNTA FREQUENTE
+
+"[Pergunta que sempre fazem]"
+
+RESPOSTA:
+[Resposta clara e direta]
+
+Ficou com dúvida? Manda mensagem!`,
+        dicas: 'Responda as mesmas perguntas que chegam no direct. Economiza tempo.'
+      },
+      {
+        id: 20,
+        titulo: 'Comparação de Produtos',
+        categoria: 'vendas',
+        formato: 'feed',
+        texto: `🤔 QUAL ESCOLHER?
+
+[Produto A] vs [Produto B]
+
+PRODUTO A:
+✅ [Vantagem 1]
+✅ [Vantagem 2]
+Ideal para: [Perfil de cliente]
+
+PRODUTO B:
+✅ [Vantagem 1]
+✅ [Vantagem 2]
+Ideal para: [Perfil de cliente]
+
+Ainda em dúvida? Chama no direct que eu te ajudo!`,
+        dicas: 'Ajude o cliente a escolher. Não diga que um é melhor, mostre diferenças.'
+      },
+      {
+        id: 21,
+        titulo: 'Dia da Semana Temático',
+        categoria: 'entretenimento',
+        formato: 'feed',
+        texto: `#[NomeDoDia] 🎉
+
+Toda [dia da semana] tem [tema específico]!
+
+Hoje vamos falar sobre:
+[Assunto do dia]
+
+[Conteúdo relacionado ao tema]
+
+Acompanha toda semana? Deixa um ❤️`,
+        dicas: 'Crie rituais semanais. Ex: Terça de Dicas, Quinta de Ofertas.'
+      },
+      {
+        id: 22,
+        titulo: 'Processo de Criação',
+        categoria: 'entretenimento',
+        formato: 'reels',
+        texto: `⏱️ DO ZERO AO PRONTO
+
+[Mostre em vídeo rápido]
+
+1. Começa assim...
+2. Depois vem...
+3. E fica pronto!
+
+É mais trabalhoso do que parece, né?
+
+Curte quem valoriza o processo! ❤️`,
+        dicas: 'Time-lapse funciona muito bem. Mostre o esforço por trás do produto.'
+      },
+      {
+        id: 23,
+        titulo: 'Benefício vs Recurso',
+        categoria: 'vendas',
+        formato: 'feed',
+        texto: `💡 VOCÊ SABIA?
+
+[Nome do produto] não é só [recurso técnico]...
+
+É [benefício real na vida do cliente]!
+
+Porque no final do dia, o que importa é:
+→ [Como melhora a vida]
+→ [Que problema resolve]
+→ [Que resultado entrega]
+
+Quer sentir essa diferença? [CTA]`,
+        dicas: 'Fale de benefícios, não recursos. Cliente quer saber o que ganha.'
+      },
+      {
+        id: 24,
+        titulo: 'Conquista Celebrada',
+        categoria: 'inspiracao',
+        formato: 'feed',
+        texto: `🎊 CONQUISTA DESBLOQUEADA!
+
+[Conte uma conquista recente do negócio]
+
+Como chegamos aqui?
+[Caminho percorrido]
+
+E nada disso seria possível sem VOCÊ! ❤️
+
+Obrigado por fazer parte dessa história!`,
+        dicas: 'Celebre marcos. Inclua clientes na comemoração.'
+      },
+      {
+        id: 25,
+        titulo: 'Convite para Ação',
+        categoria: 'vendas',
+        formato: 'feed',
+        texto: `👋 VAMOS CONVERSAR?
+
+Se você:
+✓ [Situação/necessidade 1]
+✓ [Situação/necessidade 2]
+✓ [Situação/necessidade 3]
+
+Eu posso te ajudar!
+
+Chama no direct e vamos descobrir a melhor solução para você.
+
+Sem compromisso, só uma conversa de verdade 💬`,
+        dicas: 'Convite sem pressão. Ofereça ajuda genuína, não empurre venda.'
+      },
+      {
+        id: 26,
+        titulo: 'Lista de Recursos',
+        categoria: 'educacao',
+        formato: 'feed',
+        texto: `📚 RECURSOS GRATUITOS
+
+Para [alcançar objetivo]:
+
+1️⃣ [Recurso/ferramenta 1]
+2️⃣ [Recurso/ferramenta 2]
+3️⃣ [Recurso/ferramenta 3]
+4️⃣ [Recurso/ferramenta 4]
+5️⃣ [Recurso/ferramenta 5]
+
+SALVA esse post!
+Você vai agradecer depois 🙏`,
+        dicas: 'Dê valor sem pedir nada em troca. Generosidade gera reciprocidade.'
+      },
+      {
+        id: 27,
+        titulo: 'Frase Impactante',
+        categoria: 'inspiracao',
+        formato: 'feed',
+        texto: `💭 VERDADE
+
+"[Frase impactante relacionada ao seu nicho]"
+
+Deixa isso marinar na mente...
+
+Concorda ou discorda? 👇`,
+        dicas: 'Use design atrativo. Frases curtas e poderosas funcionam melhor.'
+      },
+      {
+        id: 28,
+        titulo: 'Agradecimento Genuíno',
+        categoria: 'inspiracao',
+        formato: 'feed',
+        texto: `🙏 OBRIGADO!
+
+Hoje quero agradecer [motivo específico]
+
+Cada [like/compra/mensagem] faz diferença.
+Cada pessoa aqui importa.
+
+Vocês fazem tudo valer a pena! ❤️
+
+Deixa um ❤️ se você também está feliz de estar aqui`,
+        dicas: 'Seja específico no agradecimento. Gratidão autêntica sempre funciona.'
+      },
+      {
+        id: 29,
+        titulo: 'Erro que Você Cometeu',
+        categoria: 'educacao',
+        formato: 'feed',
+        texto: `🤦 MEU ERRO
+
+Já errei muito fazendo [erro específico]
+
+E o que aconteceu?
+[Consequência do erro]
+
+Hoje eu faço diferente:
+[Forma correta]
+
+Aprende com o meu erro! 
+Não precisa passar pelo mesmo 😅`,
+        dicas: 'Vulnerabilidade gera conexão. Mostre que você também é humano.'
+      },
+      {
+        id: 30,
+        titulo: 'Desafio Proposto',
+        categoria: 'entretenimento',
+        formato: 'feed',
+        texto: `🎯 DESAFIO!
+
+Topa fazer [desafio específico] comigo?
+
+Como funciona:
+[Regras simples do desafio]
+
+Prazo: [X] dias
+
+Aceita? Comenta EU ACEITO! 💪
+
+Vamos juntos nessa?`,
+        dicas: 'Desafios simples e alcançáveis. Acompanhe quem participa.'
+      }
+    ];
+
+    let filtroAtual = 'todos';
+
+    function renderizarModelos() {
+      const grid = document.getElementById('modelosGrid');
+      grid.innerHTML = '';
+
+      const modelosFiltrados = filtroAtual === 'todos' 
+        ? modelos 
+        : modelos.filter(m => m.categoria === filtroAtual || m.formato === filtroAtual);
+
+      modelosFiltrados.forEach(modelo => {
+        const card = document.createElement('div');
+        card.className = 'modelo-card';
+        
+        card.innerHTML = `
+          <div class="modelo-header">
+            <div class="modelo-tags">
+              <span class="tag tag-${modelo.categoria}">${modelo.categoria.charAt(0).toUpperCase() + modelo.categoria.slice(1)}</span>
+              <span class="tag tag-${modelo.formato}">${modelo.formato.charAt(0).toUpperCase() + modelo.formato.slice(1)}</span>
+            </div>
+          </div>
+          
+          <div class="modelo-titulo">${modelo.titulo}</div>
+          
+          <div class="modelo-texto">${modelo.texto}</div>
+          
+          <div class="modelo-dicas">
+            <strong>Dica de uso:</strong>
+            ${modelo.dicas}
+          </div>
+          
+          <div class="modelo-acoes">
+            <button class="btn-copiar" onclick="copiarTexto(\`${modelo.texto.replace(/`/g, '\\`')}\`)">Copiar</button>
+            <button class="btn-editar" onclick="editarTexto(\`${modelo.texto.replace(/`/g, '\\`')}\`)">Editar</button>
+          </div>
+        `;
+        
+        grid.appendChild(card);
+      });
+    }
+
+    function filtrar(categoria) {
+      filtroAtual = categoria;
+      
+      document.querySelectorAll('.filtro-btn').forEach(btn => {
+        btn.classList.remove('ativo');
+      });
+      
+      event.target.classList.add('ativo');
+      
+      renderizarModelos();
+    }
+
+    function copiarTexto(texto) {
+      navigator.clipboard.writeText(texto).then(() => {
+        mostrarToast('Texto copiado com sucesso!');
+      });
+    }
+
+    function editarTexto(texto) {
+      document.getElementById('editorTexto').value = texto;
+      document.getElementById('editorTexto').scrollIntoView({ behavior: 'smooth', block: 'center' });
+      atualizarContador();
+    }
+
+    function copiarEditor() {
+      const texto = document.getElementById('editorTexto').value;
+      if (texto.trim()) {
+        navigator.clipboard.writeText(texto).then(() => {
+          mostrarToast('Texto editado copiado!');
+        });
+      } else {
+        mostrarToast('Editor está vazio!');
+      }
+    }
+
+    function limparEditor() {
+      document.getElementById('editorTexto').value = '';
+      atualizarContador();
+    }
+
+    function atualizarContador() {
+      const texto = document.getElementById('editorTexto').value;
+      document.getElementById('contadorCaracteres').textContent = `${texto.length} caracteres`;
+    }
+
+    function mostrarToast(mensagem) {
+      const toast = document.getElementById('toast');
+      toast.textContent = mensagem;
+      toast.classList.add('show');
+      
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 3000);
+    }
+
+    function exportarModelos() {
+      let texto = `BIBLIOTECA DE MODELOS DE POSTS - PRÓSPERA RIO
+${'='.repeat(60)}
+
+Data: ${new Date().toLocaleDateString('pt-BR')}
+
+`;
+
+      modelos.forEach((modelo, index) => {
+        texto += `\n${index + 1}. ${modelo.titulo.toUpperCase()}\n`;
+        texto += `Categoria: ${modelo.categoria} | Formato: ${modelo.formato}\n`;
+        texto += `${'-'.repeat(60)}\n\n`;
+        texto += `${modelo.texto}\n\n`;
+        texto += `Dica: ${modelo.dicas}\n`;
+        texto += `${'='.repeat(60)}\n`;
+      });
+
+      texto += `\n\nProspera Rio - Instituto BrArte\n`;
+      texto += `Maré e Jacarezinho - Rio de Janeiro\n`;
+      texto += `www.institutobrarte.org\n`;
+
+      const blob = new Blob([texto], { type: 'text/plain;charset=utf-8' });
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `biblioteca-posts-prospera-rio-${new Date().toISOString().split('T')[0]}.txt`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      window.URL.revokeObjectURL(url);
+      
+      mostrarToast('Biblioteca exportada com sucesso!');
+    }
+
+    document.getElementById('editorTexto').addEventListener('input', atualizarContador);
+
+    window.addEventListener('load', function() {
+      renderizarModelos();
+    });
+  </script>
+</body>
+</html>
